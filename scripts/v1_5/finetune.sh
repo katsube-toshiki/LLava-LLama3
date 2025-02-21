@@ -2,12 +2,12 @@
 
 deepspeed --master_port 23345 /LLava-LLama3/llava/train/train_mem.py \
     --deepspeed /LLava-LLama3/scripts/zero3.json \
-    --model_name_or_path /LLava-LLama3/checkpoints/Meta-Llama-3-8B-Instruct \
+    --model_name_or_path /LLava-LLama3/checkpoints/DeepSeek-R1-Distill-Llama-8B \
     --version llama3 \
     --data_path /LLava-LLama3/playground/data/llava_v1_5_mix665k_unid.json \
     --image_folder /LLava-LLama3/playground/data \
     --vision_tower /LLava-LLama3/checkpoints/clip-vit-large-patch14-336 \
-    --pretrain_mm_mlp_adapter /LLava-LLama3/results/llava_llama3_v1_5_8b_pretrain/mm_projector.bin \
+    --pretrain_mm_mlp_adapter /LLava-LLama3/results/llava_deepseek_v1_5_8b_pretrain/mm_projector.bin \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
@@ -15,7 +15,7 @@ deepspeed --master_port 23345 /LLava-LLama3/llava/train/train_mem.py \
     --image_aspect_ratio pad \
     --group_by_modality_length True \
     --bf16 True \
-    --output_dir /LLava-LLama3/results/llava_llama3_v1_5_8b_finetune \
+    --output_dir /LLava-LLama3/results/llava_deepseek_v1_5_8b_finetune \
     --num_train_epochs 1 \
     --per_device_train_batch_size 8 \
     --per_device_eval_batch_size 4 \
